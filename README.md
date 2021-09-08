@@ -12,7 +12,7 @@ The second issue is that WSL2 resets network configuration on every reboot. The 
 
 And as you might expect (with Microsoft products), I could find no meaningful documentation on how WSL2 manages the network configuration. I spent half a day reading posts on GitHub only to find that no-one seems to know. There was a lot of discussions on virtual switches and managing network interfaces. After some debugging it became evident that none of the proposed solutions/hacks work reliably enough.
 
-I was just about to quit and revert back to VirtualBox when I came across a bit of information that pointed to the right direction. Few google searches later I was convinced that WSL2 uses Host Compute Network (HCN) Microsoft advertised API as public and documentation looked promising. Unfortunately documentation is outdated and missing a lot of fine details. Fortunately HCN api handles requests and responses in JSON format, so I was able to reverse engineer data structures that were require to create WSL2 compatible network configuration.
+I was just about to quit and revert back to VirtualBox when I came across [a bit of information that pointed to the right direction](https://github.com/microsoft/WSL/discussions/7395). Few google searches later I was convinced that WSL2 uses Host Compute Network (HCN) Microsoft advertised API as public and documentation looked promising. Unfortunately documentation is outdated and missing a lot of fine details. Fortunately HCN api handles requests and responses in JSON format, so I was able to reverse engineer data structures that were require to create WSL2 compatible network configuration.
 
 So here we have it. A script that creates a WSL2 compatible network using Host Computer Network API.
 
